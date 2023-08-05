@@ -15,7 +15,6 @@
 
         .wishlisted i {
             color: #fff !important;
-
         }
     </style>
 
@@ -66,7 +65,7 @@
                                             <span><i class="fi-rs-apps-sort"></i>Sort by:</span>
                                         </div>
                                         <div class="sort-by-dropdown-wrap">
-                                            <span> Default Sorting <i class="fi-rs-angle-small-down"></i></span>
+                                            <span> {{ $orderBy }} <i class="fi-rs-angle-small-down"></i></span>
                                         </div>
                                     </div>
                                     <div class="sort-by-dropdown">
@@ -138,7 +137,9 @@
                                             <div class="product-category">
                                                 <a href="shop.html"></a>
                                             </div>
-                                            <h2><a href="product-details.html">{{ $product->name }}</a></h2>
+                                            <h2><a
+                                                    href="{{ route('product.details', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
+                                            </h2>
                                             <div class="rating-result" title="90%">
                                                 <span>
                                                     <span>90%</span>
@@ -275,7 +276,6 @@
                     @this.set('max_value', ui.values[1]);
                 }
             });
-
         });
     </script>
 @endpush

@@ -77,16 +77,6 @@
                                             {{--                                                <li><i class="fi-rs-credit-card mr-5"></i> Cash on Delivery available</li> --}}
                                             {{--                                            </ul> --}}
                                         </div>
-                                        <div class="attr-detail attr-size">
-                                            <strong class="mr-10">Size</strong>
-                                            <ul class="list-filter size-filter font-small">
-                                                <li><a href="#">S</a></li>
-                                                <li class="active"><a href="#">M</a></li>
-                                                <li><a href="#">L</a></li>
-                                                <li><a href="#">XL</a></li>
-                                                <li><a href="#">XXL</a></li>
-                                            </ul>
-                                        </div>
                                         <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                                         <div class="detail-extralink">
                                             <div class="detail-qty border radius">
@@ -507,26 +497,6 @@
                                 @endforeach
                             </ul>
                         </div>
-                        <!-- Fillter By Price -->
-                        <div class="sidebar-widget price_range range mb-30">
-                            <div class="widget-header position-relative mb-20 pb-10">
-                                <h5 class="widget-title mb-10">Filter by price</h5>
-                                <div class="bt-1 border-color-1"></div>
-                            </div>
-                            <div class="price-filter">
-                                <div class="price-filter-inner">
-                                    <div id="slider-range" wire:ignore></div>
-                                    <div class="price_slider_amount">
-                                        <div class="label-input">
-                                            <span>Range:</span> <span class="text-info">${{ $min_value }}</span> -
-                                            <span class="text-info">${{ $max_value }}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="shop.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i>
-                                Fillter</a>
-                        </div>
                         <!-- Product sidebar Widget -->
                         <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
                             <div class="widget-header position-relative mb-20 pb-10">
@@ -574,7 +544,6 @@
                     @this.set('max_value', ui.values[1]);
                 }
             });
-
         });
     </script>
 @endpush

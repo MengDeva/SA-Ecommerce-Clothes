@@ -28,50 +28,54 @@
                                         All Products
                                     </div>
                                     <div class="col-md-6">
-                                        <a href="{{route('admin.product.add')}}" class="btn btn-success float-end">Add
+                                        <a href="{{ route('admin.product.add') }}" class="btn btn-success float-end">Add
                                             New Product</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body">
-                                @if(Session::has('message'))
-                                    <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+                                @if (Session::has('message'))
+                                    <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
                                 @endif
                                 <table class="table table-striped">
                                     <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Image</th>
-                                        <th>Name</th>
-                                        <th>Stock</th>
-                                        <th>Price</th>
-                                        <th>Category</th>
-                                        <th>Date</th>
-                                        <th>Action</th>
-                                    </tr>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Image</th>
+                                            <th>Name</th>
+                                            <th>Stock</th>
+                                            <th>Price</th>
+                                            <th>Category</th>
+                                            <th>Date</th>
+                                            <th>Action</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    @php
-                                        $i = ($products->currentPage()-1)*$products->perPage();
-                                    @endphp
-                                    @foreach($products as $product)
-                                        <tr>
-                                            <td>{{++$i}}</td>
-                                            <td><img src="{{asset('assets/imgs/products')}}/{{$product->image}}" alt="{{$product->name}}" width="60"/></td>
-                                            <td>{{$product->name}}</td>
-                                            <td>{{$product->stock_status}}</td>
-                                            <td>{{$product->regular_price}}</td>
-                                            <td>{{$product->category->name}}</td>
-                                            <td>{{$product->created_at}}</td>
-                                            <td>
-                                                <a href="{{route('admin.product.edit',['product_id'=>$product->id])}}" class="text-info">Edit</a>
-                                                <a href="#" class="text-danger" onclick="deleteConfirmation({{$product->id}})" style="margin-left: 20px ">Delete</a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                        @php
+                                            $i = ($products->currentPage() - 1) * $products->perPage();
+                                        @endphp
+                                        @foreach ($products as $product)
+                                            <tr>
+                                                <td>{{ ++$i }}</td>
+                                                <td><img src="{{ asset('assets/imgs/products') }}/{{ $product->image }}"
+                                                        alt="{{ $product->name }}" width="40" /></td>
+                                                <td>{{ $product->name }}</td>
+                                                <td>{{ $product->stock_status }}</td>
+                                                <td>{{ $product->regular_price }}</td>
+                                                <td>{{ $product->category->name }}</td>
+                                                <td>{{ $product->created_at }}</td>
+                                                <td>
+                                                    <a href="{{ route('admin.product.edit', ['product_id' => $product->id]) }}"
+                                                        class="fa fa-edit fa-2x"></a>
+                                                    <a href="#" class="fa fa-times fa-2x"
+                                                        onclick="deleteConfirmation({{ $product->id }})"
+                                                        style="margin-left: 20px "></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
-                                {{$products->links()}}
+                                {{ $products->links() }}
                             </div>
                         </div>
                     </div>
@@ -89,7 +93,7 @@
                     <div class="col-md-12 text-center">
                         <h4 class="pb-3">Do you want to delete this record?</h4>
                         <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                                data-bs-target="#deleteConfirmation">Cancel
+                            data-bs-target="#deleteConfirmation">Cancel
                         </button>
                         <button type="button" class="btn btn-danger" onclick="deleteProduct()">Delete</button>
                     </div>
@@ -102,12 +106,12 @@
 @push('scripts')
     <script>
         function deleteConfirmation(id) {
-        @this.set('product_id', id);
+            @this.set('product_id', id);
             $('#deleteConfirmation').modal('show')
         }
 
         function deleteProduct() {
-        @this.call('deleteProduct');
+            @this.call('deleteProduct');
             $('#deleteConfirmation').modal('hide')
         }
     </script>
