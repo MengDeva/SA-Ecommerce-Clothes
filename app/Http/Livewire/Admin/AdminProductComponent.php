@@ -9,7 +9,6 @@ use Livewire\WithPagination;
 class AdminProductComponent extends Component
 {
     use WithPagination;
-
     public $product_id;
 
     public function deleteProduct()
@@ -17,7 +16,7 @@ class AdminProductComponent extends Component
         $product = Product::find($this->product_id);
         unlink('assets/imgs/products/' . $product->image);
         $product->delete();
-        session()->flash('message','Product has been Deleted!');
+        session()->flash('message', 'Product has been Deleted!');
     }
     public function render()
     {

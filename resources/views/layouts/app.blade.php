@@ -14,6 +14,9 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/imgs/theme/favicon.ico') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     @livewireStyles
 </head>
 
@@ -111,8 +114,8 @@
                                     <ul>
                                         <li><a href="/">Home </a></li>
                                         <li><a href="{{ route('shop') }}">Shop</a></li>
-                                        <li><a href="blog.html">Blog </a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        {{-- <li><a href="blog.html">Blog </a></li> --}}
+                                        {{-- <li><a href="{{ route('contact') }}">Contact</a></li> --}}
                                         @auth
                                             <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
                                                 @if (Auth::user()->utype == 'ADM')
@@ -121,17 +124,23 @@
                                                         <li><a href="{{ route('admin.products') }}">Products</a></li>
                                                         <li><a href="{{ route('admin.categories') }}">Categories</a></li>
                                                         <li><a href="{{ route('admin.home.slider') }}">Manage Slider</a></li>
-                                                        <li><a href="#">Coupons</a></li>
-                                                        <li><a href="#">Orders</a></li>
-                                                        <li><a href="#">Customers</a></li>
-                                                    </ul>
-                                                @else
-                                                    <ul class="sub-menu">
-                                                        <li><a href="{{ route('user.dashboard') }}">Dashboard</a></li>
-                                                    </ul>
-                                                @endif
+                                                        <li><a href="{{ route('admin.coupons') }}">All Coupons</a></li>
+                                                        {{-- <li><a href="{{ route('admin.contact') }}">Contact Us Messages</a> --}}
                                             </li>
-                                            @endif
+                                            <li><a href="{{ route('admin.orders') }}">Orders</a></li>
+                                            <li><a href="{{ route('admin.customers') }}">Customers</a></li>
+                                        </ul>
+                                    @else
+                                        <ul class="sub-menu">
+                                            <li><a href="{{ route('user.dashboard') }}">Dashboard</a></li>
+                                            <li><a href="{{ route('user.profile') }}">My Profile</a></li>
+                                            <li><a href="{{ route('user.orders') }}">My Orders</a></li>
+                                            <li><a href="{{ route('user.changepassword') }}">Change password</a>
+                                            </li>
+                                        </ul>
+                                        @endif
+                                        </li>
+                                        @endif
                                         </ul>
                                     </nav>
                                 </div>
@@ -414,7 +423,7 @@
                             <div class="col-lg-2  col-md-3">
                                 <h5 class="widget-title wow fadeIn animated">My Account</h5>
                                 <ul class="footer-list wow fadeIn animated">
-                                    <li><a href="my-account.html">My Account</a></li>
+                                    <li><a href="#">My Account</a></li>
                                     <li><a href="#">View Cart</a></li>
                                     <li><a href="#">My Wishlist</a></li>
                                     <li><a href="#">Track My Order</a></li>
@@ -428,15 +437,16 @@
                                         <p class="wow fadeIn animated">From App Store or Google Play</p>
                                         <div class="download-app wow fadeIn animated mob-app">
                                             <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img
-                                                    src="assets/imgs/theme/app-store.jpg" alt=""></a>
-                                            <a href="#" class="hover-up"><img src="assets/imgs/theme/google-play.jpg"
+                                                    src="{{ asset('assets/imgs/theme/app-store.jpg') }}" alt=""></a>
+                                            <a href="#" class="hover-up"><img
+                                                    src="{{ asset('assets/imgs/theme/google-play.jpg') }}"
                                                     alt=""></a>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-lg-12 mt-md-3 mt-lg-0">
                                         <p class="mb-20 wow fadeIn animated">Secured Payment Gateways</p>
-                                        <img class="wow fadeIn animated" src="assets/imgs/theme/payment-method.png"
-                                            alt="">
+                                        <img class="wow fadeIn animated"
+                                            src="{{ asset('assets/imgs/theme/payment-method.png') }}" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -463,6 +473,15 @@
                 </div>
             </footer>
             <!-- Vendor JS-->
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+            </script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+            </script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+            </script>
             <script src="{{ asset('assets/js/vendor/modernizr-3.6.0.min.js') }}"></script>
             <script src="{{ asset('assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
             <script src="{{ asset('assets/js/vendor/jquery-migrate-3.3.0.min.js') }}"></script>

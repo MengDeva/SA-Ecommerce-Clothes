@@ -57,16 +57,16 @@
                                             <tr>
                                                 <td>{{ ++$i }}</td>
                                                 <td><img src="{{ asset('assets/imgs/categories') }}/{{ $category->image }}"
-                                                        width="60"></td>
+                                                        width="35"></td>
                                                 <td>{{ $category->name }}</td>
                                                 <td>{{ $category->slug }}</td>
                                                 <td>{{ $category->is_popular == 1 ? 'Yes' : 'No' }}</td>
                                                 <td>
                                                     <a href="{{ route('admin.category.edit', ['category_id' => $category->id]) }}"
-                                                        class="text-info">Edit</a>
-                                                    <a href="#" class="text-danger"
+                                                        class="fa fa-edit fa-2x"></a>
+                                                    <a href="#" class="fa fa-times fa-2x"
                                                         onclick="deleteConfirmation({{ $category->id }})"
-                                                        style="margin-left: 20px ">Delete</a>
+                                                        style="margin-left: 20px "></a>
                                                 </td>
                                             </tr>
                                         @endforeach

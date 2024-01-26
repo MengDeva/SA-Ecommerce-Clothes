@@ -28,48 +28,53 @@
                                         All Slides
                                     </div>
                                     <div class="col-md-6">
-                                        <a href="{{route('admin.home.slider.add')}}" class="btn btn-success float-end">Add New Slide</a>
+                                        <a href="{{ route('admin.home.slider.add') }}"
+                                            class="btn btn-success float-end">Add New Slide</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body">
-                                @if(Session::has('message'))
-                                    <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+                                @if (Session::has('message'))
+                                    <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
                                 @endif
                                 <table class="table table-striped">
                                     <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Image</th>
-                                        <th>TopTitle</th>
-                                        <th>Title</th>
-                                        <th>Subtitle</th>
-                                        <th>Offer</th>
-                                        <th>Link</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Image</th>
+                                            <th>TopTitle</th>
+                                            <th>Title</th>
+                                            <th>Subtitle</th>
+                                            <th>Offer</th>
+                                            <th>Link</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    @php
-                                        $i = 0;
-                                    @endphp
-                                    @foreach($slides as $slide)
-                                        <tr>
-                                            <td>{{++$i}}</td>
-                                            <td><img src="{{asset('assets/imgs/slider')}}/{{$slide->image}}" width="80px"/></td>
-                                            <td>{{$slide->top_title}}</td>
-                                            <td>{{$slide->title}}</td>
-                                            <td>{{$slide->sub_title}}</td>
-                                            <td>{{$slide->offer}}</td>
-                                            <td>{{$slide->link}}</td>
-                                            <td>{{$slide->status == 1 ? 'Active':'Inactive'}}</td>
-                                            <td>
-                                                <a href="{{route('admin.home.slider.edit',['slide_id'=>$slide->id])}}" class="text-info">Edit</a>
-                                                <a href="#" class="text-danger" onclick="deleteConfirmation({{$slide->id}})" style="margin-left: 20px ">Delete</a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                        @php
+                                            $i = 0;
+                                        @endphp
+                                        @foreach ($slides as $slide)
+                                            <tr>
+                                                <td>{{ ++$i }}</td>
+                                                <td><img src="{{ asset('assets/imgs/slider') }}/{{ $slide->image }}"
+                                                        width="80px" /></td>
+                                                <td>{{ $slide->top_title }}</td>
+                                                <td>{{ $slide->title }}</td>
+                                                <td>{{ $slide->sub_title }}</td>
+                                                <td>{{ $slide->offer }}</td>
+                                                <td>{{ $slide->link }}</td>
+                                                <td>{{ $slide->status == 1 ? 'Active' : 'Inactive' }}</td>
+                                                <td>
+                                                    <a href="{{ route('admin.home.slider.edit', ['slide_id' => $slide->id]) }}"
+                                                        class="fa fa-edit fa-2x"></a>
+                                                    <a href="#" class="fa fa-times fa-2x"
+                                                        onclick="deleteConfirmation({{ $slide->id }})"
+                                                        style="margin-left: 20px "></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -89,7 +94,7 @@
                     <div class="col-md-12 text-center">
                         <h4 class="pb-3">Do you want to delete this record?</h4>
                         <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                                data-bs-target="#deleteConfirmation">Cancel
+                            data-bs-target="#deleteConfirmation">Cancel
                         </button>
                         <button type="button" class="btn btn-danger" onclick="deleteSlide()">Delete</button>
                     </div>
@@ -102,14 +107,13 @@
 @push('scripts')
     <script>
         function deleteConfirmation(id) {
-        @this.set('slide_id', id);
+            @this.set('slide_id', id);
             $('#deleteConfirmation').modal('show')
         }
 
         function deleteSlide() {
-        @this.call('deleteSlide');
+            @this.call('deleteSlide');
             $('#deleteConfirmation').modal('hide')
         }
     </script>
 @endpush
-

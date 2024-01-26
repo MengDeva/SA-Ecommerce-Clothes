@@ -700,7 +700,8 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th colspan="2">Product</th>
+                                    <th>Image</th>
+                                    <th>Product Name</th>
                                     <th>Total</th>
                                 </tr>
                             </thead>
